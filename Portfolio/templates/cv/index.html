@@ -1,12 +1,23 @@
 {% load static %}
 <!DOCTYPE html>
+
+<style>
+
+    img{
+    border: 7px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+    }
+</style>
+
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
   <!--<![endif]-->
   <head>
-    <title>Responsive Resume/CV Template for Developers</title>
+    <title>{{user.username}}</title>
     <!--  user_profile username-->
     <!-- Meta -->
     <meta charset="utf-8" />
@@ -79,9 +90,9 @@
     <div class="wrapper">
       <div class="sidebar-wrapper">
         <div class="profile-container">
-          <img class="profile" src="assets/images/profile.png" alt="" />
+          <img class="profile" src="{{user.image.url}}" alt="" />
           <!--  user_profile image-->
-          <h1 class="name">Alan Doe</h1>
+          <h1 class="name">{{user.first_name}} {{user.last_name}} </h1>
           <!--  user_profile fullname-->
           <h3 class="tagline">Full Stack Developer</h3>
           <!--  user_profile profession-->
@@ -109,11 +120,14 @@
         <!--//contact-container-->
         <div class="education-container container-block">
           <h2 class="container-block-title">Education</h2>
+
+          {% for each_education in education  %}
           <div class="item">
-            <h4 class="degree">MSc in Computer Science</h4>
-            <h5 class="meta">University of London</h5>
-            <div class="time">2011 - 2012</div>
+            <h4 class="degree">{{each_education.qualification_name}}</h4>
+            <h5 class="meta">{{each_education.institute_location}}</h5>
+            <div class="time">{{each_education.completed_year}}</div>
           </div>
+          {% endfor %}
           <!--  user education -->
         </div>
         <!--//education-container-->
@@ -126,18 +140,9 @@
             <i class="fa fa-user"></i>Career Profile
           </h2>
           <div class="summary">
+              {{user.personal_details}}
             <!--  user_profile description -->
-            <p>
-              Summarise your career here lorem ipsum dolor sit amet,
-              consectetuer adipiscing elit. You can
-              <a
-                href="http://themes.3rdwavemedia.com/website-templates/orbit-free-resume-cv-template-for-developers/"
-                target="_blank"
-                >download this free resume/CV template here</a
-              >. Aenean commodo ligula eget dolor aenean massa. Cum sociis
-              natoque penatibus et magnis dis parturient montes, nascetur
-              ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.
-            </p>
+          
           </div>
           <!--//summary-->
         </section>
@@ -148,35 +153,25 @@
             <i class="fa fa-briefcase"></i>Experiences
           </h2>
           <!--  experiance -->
-
+          {% for each_experiance in experiance  %}
           <div class="item">
             <div class="meta">
               <div class="upper-row">
-                <h3 class="job-title">Lead Developer</h3>
-                <div class="time">2015 - Present</div>
+                <h3 class="job-title">{{each_experiance.job_title}}</h3>
+                <div class="time">{{each_experiance.started_date}} --- {{each_experiance.end_date}}</div>
               </div>
               <!--//upper-row-->
-              <div class="company">Startup Hubs, San Francisco</div>
+              <div class="company">{{each_experiance.location}}</div>
             </div>
+
             <!--//meta-->
             <div class="details">
-              <p>
-                Describe your role here lorem ipsum dolor sit amet, consectetuer
-                adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes,
-                nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                pellentesque eu, pretium quis, sem. Nulla consequat massa quis
-                enim. Donec pede justo.
-              </p>
-              <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo.
-              </p>
+                {{each_experiance.description}}
+            
             </div>
             <!--//details-->
           </div>
+          {%endfor%}
           <!--//item-->
 
           <!--//item-->
@@ -187,13 +182,12 @@
           <h2 class="section-title"><i class="fa fa-archive"></i>Projects</h2>
 
           <!--  projects -->
+          {% for each_project in project  %}
           <div class="item">
-            <span class="project-title"><a href="#hook">Velocity</a></span> -
-            <span class="project-tagline"
-              >A responsive website template designed to help startups promote,
-              market and sell their products.</span
-            >
+            <span class="project-title"><a href="#hook">{{each_project.project_name}}</a></span> -
+            <span class="project-tagline"></span>{{each_project.project_description}}
           </div>
+          {%endfor%}
           <!--//item-->
         </section>
         <!--//section-->
@@ -220,11 +214,7 @@
     </div>
 
     <footer class="footer">
-      <div class="text-center">
-        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
-        Shared by <i class="fa fa-love"></i
-        ><a href="https://bootstrapthemes.co">BootstrapThemes</a>
-      </div>
+      
       <!--//container-->
     </footer>
     <!--//footer-->
