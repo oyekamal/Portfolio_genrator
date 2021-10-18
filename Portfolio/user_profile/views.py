@@ -7,7 +7,7 @@ from experiance.models import UserExperiance
 from user_project.models import UserProject
 
 def user_details(request):
-    user = User.objects.get(username="raheel")
+    user = User.objects.get(username="kamal")
     # user.img = settings.MEDIA_ROOT + str(user.image)
     education = UserEducation.objects.filter(user=user)
     experiance = UserExperiance.objects.filter(user=user)
