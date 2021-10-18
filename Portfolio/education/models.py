@@ -8,8 +8,8 @@ class UserEducation(models.Model):
     models feild created for user education
     """
 
-    qualification_name = models.CharField(max_length=50)
+    qualification_name = models.CharField(max_length=50,blank=True, null=True)
     completed_year = models.DateField() 
     user_percentage = models.PositiveIntegerField()
     user_CGPA = models.PositiveIntegerField()
-    institute_location = models.CharField(max_length=100)
+    institute_location = models.CharField(max_length=100,blank=True, null=True)
