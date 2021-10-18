@@ -5,7 +5,7 @@ class UserSkills(models.Model):
     """
     models feild created for user skills
     """
-    skill_name = models.CharField(max_length=30)
+    skill_name = models.CharField(max_length=30,blank=True, null=True)
     skill_rate= models.PositiveIntegerField()
 
     

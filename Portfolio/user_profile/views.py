@@ -7,15 +7,15 @@ from experiance.models import UserExperiance
 from user_project.models import UserProject
 
 def user_details(request):
-    user = User.objects.get(username="kamal")
+    user = User.objects.get(username="raheel")
     education = UserEducation.objects.filter(user=user)
     experiance = UserExperiance.objects.filter(user=user)
     project = UserProject.objects.filter(user=user)
 
 
-    print(education)
-    print(experiance)
-    print(project)
-    return render(request, 'cv/index.html',{'user': user})
+    # print(education)
+    # print(experiance)
+    # print(project)
+    return render(request, 'cv/index.html',{'user': user ,'education':education,'experiance':experiance , 'project':project})
 
 
