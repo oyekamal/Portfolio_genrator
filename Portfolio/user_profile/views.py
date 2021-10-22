@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render
 from django.conf import settings
+
+from skill.models import UserSkills
 from .models import User
 from education.models import UserEducation
 from experiance.models import UserExperiance
@@ -12,11 +14,12 @@ def user_details(request):
     education = UserEducation.objects.filter(user=user)
     experiance = UserExperiance.objects.filter(user=user)
     project = UserProject.objects.filter(user=user)
+    skill = UserSkills.objects.filter(user=user)
 
     print("settings.MEDIA_ROOT----",user.image.url)
     # print(education)
     # print(experiance)
     # print(project)
-    return render(request, 'cv/index.html',{'user': user ,'education':education,'experiance':experiance , 'project':project})
+    return render(request, 'cv/index.html',{'user': user ,'education':education,'experiance':experiance , 'project':project , 'skill':skill})
 
 
