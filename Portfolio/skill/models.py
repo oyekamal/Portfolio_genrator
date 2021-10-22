@@ -8,4 +8,6 @@ class UserSkills(models.Model):
     skill_name = models.CharField(max_length=30,blank=True, null=True)
     skill_rate= models.PositiveIntegerField()
 
-    
+
+
+# this need to be implementd
