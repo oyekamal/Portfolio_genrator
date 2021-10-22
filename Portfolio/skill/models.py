@@ -14,4 +14,6 @@ class UserSkills(models.Model):
     def __str__(self):
         return self.skill_name
 
-    
+
+
+# this need to be implementd
