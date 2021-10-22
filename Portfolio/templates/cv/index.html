@@ -197,17 +197,19 @@
           <h2 class="section-title">
             <i class="fa fa-rocket"></i>Skills &amp; Proficiency
           </h2>
+          {% for each_skill in skill  %}
           <div class="skillset">
             <!--  skills -->
             <div class="item">
-              <h3 class="level-title">Python &amp; Django</h3>
+              <h3 class="level-title">{{each_skill.skill_name}} </h3>
               <div class="level-bar">
-                <div class="level-bar-inner" data-level="34%"></div>
+                <div class="level-bar-inner" data-level={{each_skill.skill_rate}}%></div>
               </div>
               <!--//level-bar-->
             </div>
             <!--//item-->
           </div>
+          {%endfor%}
         </section>
         <!--//skills-section-->
       </div>
